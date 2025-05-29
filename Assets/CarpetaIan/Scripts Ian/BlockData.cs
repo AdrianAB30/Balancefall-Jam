@@ -4,6 +4,7 @@ using UnityEngine;
 public class BlockData : ScriptableObject
 {
     public GameObject blockPrefab;
-    public AnimationCurve fallSpeedCurve; 
+    public AnimationCurve fallSpeedCurve;
+    public Sprite blockIcon;
     public float mass;
 }
