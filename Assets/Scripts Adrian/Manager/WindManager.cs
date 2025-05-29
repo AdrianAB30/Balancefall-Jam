@@ -13,7 +13,7 @@ public class WindManager : MonoBehaviour
 
     public static Vector3 CurrentWind { get; private set; }
 
-    private int direction = 1; 
+    private int direction = 1;
     private bool isWaiting = false;
 
     void Update()
@@ -22,8 +22,6 @@ public class WindManager : MonoBehaviour
 
         transform.position += Vector3.right * direction * speed * Time.deltaTime;
         CurrentWind = Vector3.right * direction * windStrength;
-
-        ApplyWindToNearbyObjects();
 
         if (transform.position.x >= rightLimit && direction == 1)
         {
@@ -35,10 +33,18 @@ public class WindManager : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (!isWaiting)
+        {
+            ApplyWindToNearbyObjects();
+        }
+    }
+
     IEnumerator WaitAndSwitchDirection(int newDirection)
     {
         isWaiting = true;
-        direction = 0; 
+        direction = 0;
         yield return new WaitForSeconds(waitTime);
         direction = newDirection;
         isWaiting = false;
@@ -55,7 +61,7 @@ public class WindManager : MonoBehaviour
                 Rigidbody rb = hit.attachedRigidbody;
                 if (rb != null)
                 {
-                    rb.AddForce(CurrentWind, ForceMode.Force);
+                    rb.AddForce(CurrentWind, ForceMode.Acceleration);
                 }
             }
         }
