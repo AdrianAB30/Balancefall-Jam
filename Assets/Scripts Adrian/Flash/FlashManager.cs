@@ -4,30 +4,40 @@ using System.Collections;
 public class FlashManager : MonoBehaviour
 {
     [SerializeField] private float flashDuration = 0.3f;
-    [SerializeField] private Color flashColor = new Color32(255, 169, 0, 255);
     [SerializeField] private float flashIntensity = 0.5f;
 
     private Color originalAmbientColor;
     private bool isFlashing = false;
+
+
+    void OnEnable()
+    {
+        BlockSpawner.OnBlockSpawned += FlashWithColor;
+    }
+
+    void OnDisable()
+    {
+        BlockSpawner.OnBlockSpawned -= FlashWithColor;
+    }
 
     void Start()
     {
         originalAmbientColor = RenderSettings.ambientLight;
     }
 
-    void Update()
+    public void FlashWithColor(Color32 color)
     {
-        if (Input.GetKeyDown(KeyCode.R) && !isFlashing)
+        if (!isFlashing)
         {
-            StartCoroutine(FlashAmbientLightSmooth());
+            StartCoroutine(FlashAmbientLightSmooth((Color)color));
         }
     }
 
-    private IEnumerator FlashAmbientLightSmooth()
+    private IEnumerator FlashAmbientLightSmooth(Color32 flashColor)
     {
         isFlashing = true;
 
-        Color targetColor = flashColor * flashIntensity;
+        Color targetColor = ((Color)flashColor) * flashIntensity;
         float timer = 0f;
 
         while (timer < flashDuration)

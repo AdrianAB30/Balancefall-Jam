@@ -20,12 +20,12 @@ public class CameraMovement : MonoBehaviour
     {
         if (!moving)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 currentIndex = (currentIndex + 1) % pointsCamera.Count;
                 StartCoroutine(MoveToPoint(pointsCamera[currentIndex]));
             }
-            else if (Input.GetKeyDown(KeyCode.Q))
+            else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 currentIndex = (currentIndex - 1 + pointsCamera.Count) % pointsCamera.Count;
                 StartCoroutine(MoveToPoint(pointsCamera[currentIndex]));
