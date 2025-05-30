@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8d9ad0651286d54796786ae7f41eefb, type: 3}
-  m_Name: Bloque madera
+  m_Name: Bloque Metal
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 820508031238727303, guid: 53a38a19ecb03f0418f1de44befc42ee, type: 3}
   fallSpeedCurve:
@@ -37,7 +37,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  mass: 10
+  mass: 20
   color:
     serializedVersion: 2
-    rgba: 13995
+    rgba: 2302893

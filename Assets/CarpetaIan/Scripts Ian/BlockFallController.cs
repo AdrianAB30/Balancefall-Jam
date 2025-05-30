@@ -7,9 +7,11 @@ public class BlockFallController : MonoBehaviour
     private Rigidbody rb;
     private float startTime;
     private Action onLanded;
+    private Transform cam;
+
 
     public float moveSpeed = 5f;
-    public float rotationDuration = 1f; // Duración de la rotación en segundos
+    public float rotationDuration = 1f; 
 
     private bool isFalling = true;
     private bool isRotating = false;
@@ -18,6 +20,7 @@ public class BlockFallController : MonoBehaviour
 
     public void Initialize(BlockData blockData, Action onLand)
     {
+        cam = Camera.main.transform;
         data = blockData;
         startTime = Time.time;
         onLanded = onLand;
@@ -39,13 +42,18 @@ public class BlockFallController : MonoBehaviour
     {
         if (!isFalling) return;
 
-        // Movimiento WASD
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
-        Vector3 move = new Vector3(moveX, 0, moveZ) * moveSpeed * Time.deltaTime;
+       
+
+        Vector3 right = cam.right;
+        Vector3 forward = Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized;
+
+        Vector3 direction = (right * moveX + forward * moveZ).normalized;
+        Vector3 move = direction * moveSpeed * Time.deltaTime;
+
         transform.Translate(move, Space.World);
 
-        // Rotación por pasos
         if (!isRotating)
         {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -75,6 +83,14 @@ public class BlockFallController : MonoBehaviour
         rotationTime = 0f;
         isRotating = true;
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Vacio"))
+        {
+            onLanded?.Invoke();
+            Destroy(gameObject); 
+        }
+    }
 
     void OnCollisionEnter(Collision other)
     {
@@ -83,6 +99,6 @@ public class BlockFallController : MonoBehaviour
         isFalling = false;
         rb.useGravity = true;
         onLanded?.Invoke();
-        Destroy(this); // Desactiva el control
+        Destroy(this); 
     }
 }

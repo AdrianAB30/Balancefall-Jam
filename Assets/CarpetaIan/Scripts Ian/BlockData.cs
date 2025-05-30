@@ -5,6 +5,6 @@ public class BlockData : ScriptableObject
 {
     public GameObject blockPrefab;
     public AnimationCurve fallSpeedCurve;
-    public Sprite blockIcon;
     public float mass;
+    public Color32 color;
 }
