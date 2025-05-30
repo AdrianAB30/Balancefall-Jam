@@ -4,12 +4,16 @@
 TagManager:
   serializedVersion: 3
   tags:
+<<<<<<< HEAD
   - Vacio
+=======
+  - Cubo
+>>>>>>> 1e0231d1b18d0d6fc63828c4c841dc0fe5b1d0f4
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Cube
   - Water
   - UI
   - 
