@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4730732135277074722
+--- !u!1001 &1407196749711712584
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 173cba7f1b5d80946bb2b023723db35f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 173cba7f1b5d80946bb2b023723db35f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 173cba7f1b5d80946bb2b023723db35f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5347929
+      value: -9.223
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 173cba7f1b5d80946bb2b023723db35f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30,11 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 173cba7f1b5d80946bb2b023723db35f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 173cba7f1b5d80946bb2b023723db35f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 173cba7f1b5d80946bb2b023723db35f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 4181632910216908101, guid: 173cba7f1b5d80946bb2b023723db35f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ed707c02beeb2a34b9512a26b5e87e9e, type: 2}
+      objectReference: {fileID: 2100000, guid: f21c0bcff61743447b66d3acb24b5528, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

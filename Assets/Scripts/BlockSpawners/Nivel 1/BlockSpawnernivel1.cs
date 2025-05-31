@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class BlockSpawnernivel1 : MonoBehaviour
 {
     public BlockData[] blocks;
     public Transform spawnPoint;
-    public Transform root;
     private GameObject currentBlock;
     public UILevel1 uiLvl1;
 
@@ -35,7 +35,8 @@ public class BlockSpawnernivel1 : MonoBehaviour
         Debug.Log($"🔒 Mínimo requerido en escena para ganar: {MinBlocksRequired}");
 
         uiLvl1.Inicializar(maxBlocksToSpawn, MinBlocksRequired);
-        SpawnRandomBlock(); 
+        spawningEnabled = false; // Asegura que esté desactivado al comienzo
+        StartCoroutine(DelaySpawner());
     }
 
     void Update()
@@ -52,7 +53,7 @@ public class BlockSpawnernivel1 : MonoBehaviour
     {
         if (spawnedCount >= maxBlocksToSpawn)
         {
-            Debug.Log("🚫 Límite de bloques alcanzado.");
+            Debug.Log("Límite de bloques alcanzado.");
             return;
         }
 
@@ -71,7 +72,6 @@ public class BlockSpawnernivel1 : MonoBehaviour
         currentBlock = Instantiate(data.blockPrefab, spawnPoint.position, Quaternion.identity);
         currentBlock.tag = blockTag;
         currentBlock.layer = LayerMask.NameToLayer("Cubo");
-        currentBlock.transform.parent = root;
 
         Rigidbody rb = currentBlock.AddComponent<Rigidbody>();
         rb.mass = data.mass;
@@ -85,11 +85,17 @@ public class BlockSpawnernivel1 : MonoBehaviour
 
         uiLvl1.ActualizarBloquesRestantes(maxBlocksToSpawn - spawnedCount);
 
-        Debug.Log($"🧊 Bloque {spawnedCount}/{maxBlocksToSpawn} instanciado.");
+        Debug.Log($"Bloque {spawnedCount}/{maxBlocksToSpawn} instanciado.");
     }
     public void DetenerSpawning()
     {
         spawningEnabled = false;
         Debug.Log("🛑 Se ha detenido el spawner.");
+    }
+    IEnumerator DelaySpawner()
+    {
+        yield return new WaitForSeconds(5f);
+        spawningEnabled = true;
+        SpawnRandomBlock();
     }
 }

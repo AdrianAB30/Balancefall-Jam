@@ -1138,6 +1138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99eac3baef22d09419ad29ac7c2e2db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelLevels: []
+  easeAnimation: 0
+  duration: 0
+  targetPositions: []
 --- !u!4 &1491192958
 Transform:
   m_ObjectHideFlags: 0

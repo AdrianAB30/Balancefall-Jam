@@ -1210,13 +1210,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 85430767}
   m_HandleRect: {fileID: 703003895}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1651465845}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SetSFXVolumen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &614175782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,13 +2565,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 2115042395}
   m_HandleRect: {fileID: 440371755}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1651465845}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SetMusicVolumen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &966850396
 GameObject:
   m_ObjectHideFlags: 0
@@ -4357,6 +4381,11 @@ MonoBehaviour:
   VolumenMusica: {fileID: 875181612}
   VolumenMusicaSFX: {fileID: 597616472}
   audioSettings: {fileID: 11400000, guid: bc0a6e4304e865142980f688d74263b5, type: 2}
+  menuMusic: {fileID: 8300000, guid: e76e3051b78b47e4c8d2cac96ce67e7d, type: 3}
+  nivel1Music: {fileID: 8300000, guid: 1d11c4c8966bbf843b697974f1276318, type: 3}
+  nivel2Music: {fileID: 8300000, guid: 632096db5ecaa364cb5ae826ce024cdd, type: 3}
+  nivel3Music: {fileID: 8300000, guid: 8186e0ab4c681b5458169bf6008ef089, type: 3}
+  musicSource: {fileID: 1651465846}
 --- !u!82 &1651465846
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5079,13 +5108,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 2108219311}
   m_HandleRect: {fileID: 790674459}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1651465845}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SetMasterVolumen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1836919560
 GameObject:
   m_ObjectHideFlags: 0

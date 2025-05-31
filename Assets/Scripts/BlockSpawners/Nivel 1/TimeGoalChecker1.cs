@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class TimeGoalCheckerNivel1 : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class TimeGoalCheckerNivel1 : MonoBehaviour
     public GameObject platform;
     public BlockCounterPlatform contadorPlataforma;
     public BlockSpawnernivel1 spawner;
+    public TMP_Text textTime;
+    public Animator dronAnmiation;
 
     private float survivalTimer = 0f;
     private float globalTimer = 0f;
@@ -27,9 +30,9 @@ public class TimeGoalCheckerNivel1 : MonoBehaviour
 
     void Start()
     {
-        // Tomar el valor generado por el spawner
         minimumBlocksRequired = BlockSpawnernivel1.MinBlocksRequired;
         Debug.Log($"📋 TimeGoalChecker: usando mínimo requerido = {minimumBlocksRequired}");
+
     }
 
     void Update()
@@ -53,7 +56,10 @@ public class TimeGoalCheckerNivel1 : MonoBehaviour
                     rb.isKinematic = true;
                 }
                 spawner.DetenerSpawning();
+                dronAnmiation.SetBool("isWinDron", true);
+                StartCoroutine(Win());
                 gameManager.LevelComplete("✅ ¡Superaste el desafío de tiempo!");
+
             }
         }
         else
@@ -66,6 +72,11 @@ public class TimeGoalCheckerNivel1 : MonoBehaviour
             levelEnded = true;
             spawner.DetenerSpawning();
             StartCoroutine(FadeAndRestart());
+        }
+        if (!levelEnded)
+        {
+            float timeLeft = Mathf.Max(0f, maxTimeToTry - globalTimer);
+            textTime.text = timeLeft.ToString("F0");
         }
     }
 
@@ -86,6 +97,11 @@ public class TimeGoalCheckerNivel1 : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Menu");
+    }
+    IEnumerator Win()
+    {
+        yield return new WaitForSeconds(8f);
+        SceneManager.LoadScene("Nivel 2");
     }
 }
