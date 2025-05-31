@@ -3,11 +3,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
-public class TimeGoalChecker : MonoBehaviour
+public class StableHeightGoal : MonoBehaviour
 {
     [Header("Condiciones de victoria")]
-    public float timeToWin = 30f;
-    public int minimumBlocksRequired = 5;
+    public float requiredHeight = 10f;
     public string blockTag = "Bloque";
 
     [Header("Condición de derrota")]
@@ -15,9 +14,8 @@ public class TimeGoalChecker : MonoBehaviour
 
     [Header("Referencias")]
     public GameManager gameManager;
-    public Image fadeImage; // Imagen negra del Canvas con alpha = 0
+    public Image fadeImage;
 
-    private float survivalTimer = 0f;
     private float globalTimer = 0f;
     private bool levelEnded = false;
 
@@ -27,21 +25,12 @@ public class TimeGoalChecker : MonoBehaviour
 
         globalTimer += Time.deltaTime;
 
-        int currentBlockCount = GameObject.FindGameObjectsWithTag(blockTag).Length;
+        float maxHeight = GetMaxPlacedBlockHeight();
 
-        if (currentBlockCount >= minimumBlocksRequired)
+        if (maxHeight >= requiredHeight)
         {
-            survivalTimer += Time.deltaTime;
-
-            if (survivalTimer >= timeToWin)
-            {
-                levelEnded = true;
-                gameManager.LevelComplete("✅ ¡Superaste el desafío de tiempo!");
-            }
-        }
-        else
-        {
-            survivalTimer = 0f; // reinicia si baja del mínimo
+            levelEnded = true;
+            gameManager.LevelComplete("✅ ¡Torre alcanzó la altura!");
         }
 
         if (globalTimer >= maxTimeToTry)
@@ -49,6 +38,29 @@ public class TimeGoalChecker : MonoBehaviour
             levelEnded = true;
             StartCoroutine(FadeAndRestart());
         }
+    }
+
+    float GetMaxPlacedBlockHeight()
+    {
+        GameObject[] blocks = GameObject.FindGameObjectsWithTag(blockTag);
+        float maxY = 0f;
+
+        foreach (var block in blocks)
+        {
+            // Verifica si ya no tiene BlockFallController (ya se soltó)
+            if (block.GetComponent<BlockFallController>() == null)
+            {
+                float y = block.transform.position.y;
+
+                // Opcional: ignorar si el bloque está muy arriba flotando
+                if (y > maxY && y < 100f)
+                {
+                    maxY = y;
+                }
+            }
+        }
+
+        return maxY;
     }
 
     IEnumerator FadeAndRestart()

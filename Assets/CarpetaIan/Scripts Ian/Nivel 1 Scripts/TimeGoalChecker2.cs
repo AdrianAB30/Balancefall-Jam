@@ -3,23 +3,31 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
-public class TimeGoalChecker : MonoBehaviour
+public class TimeGoalCheckerNivel1 : MonoBehaviour
 {
     [Header("Condiciones de victoria")]
     public float timeToWin = 30f;
-    public int minimumBlocksRequired = 5;
-    public string blockTag = "Bloque";
+    public string blockTag = "Cubo";
 
     [Header("Condición de derrota")]
     public float maxTimeToTry = 60f;
 
     [Header("Referencias")]
     public GameManager gameManager;
-    public Image fadeImage; // Imagen negra del Canvas con alpha = 0
+    public Image fadeImage;
 
     private float survivalTimer = 0f;
     private float globalTimer = 0f;
     private bool levelEnded = false;
+
+    private int minimumBlocksRequired;
+
+    void Start()
+    {
+        // Tomar el valor generado por el spawner
+        minimumBlocksRequired = BlockSpawnernivel1.MinBlocksRequired;
+        Debug.Log($"📋 TimeGoalChecker: usando mínimo requerido = {minimumBlocksRequired}");
+    }
 
     void Update()
     {
@@ -41,7 +49,7 @@ public class TimeGoalChecker : MonoBehaviour
         }
         else
         {
-            survivalTimer = 0f; // reinicia si baja del mínimo
+            survivalTimer = 0f;
         }
 
         if (globalTimer >= maxTimeToTry)
@@ -58,8 +66,8 @@ public class TimeGoalChecker : MonoBehaviour
 
         float duration = 2f;
         float t = 0f;
-
         Color color = fadeImage.color;
+
         while (t < duration)
         {
             t += Time.deltaTime;
