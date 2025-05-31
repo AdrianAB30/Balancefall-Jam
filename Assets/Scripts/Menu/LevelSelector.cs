@@ -53,7 +53,15 @@ public class LevelSelector : MonoBehaviour
             
             currentIndex--;
             UpdateSelection();
+            
         }
+        else if (currentIndex <= 0)
+        {
+            currentIndex = 2;
+           UpdateSelection();
+        }
+
+       
     }
 
     public void MoveRight()
@@ -63,6 +71,12 @@ public class LevelSelector : MonoBehaviour
             currentIndex++;
             UpdateSelection();
         }
+        else if (currentIndex >= 2)
+        {
+            currentIndex = 0;
+            UpdateSelection();
+        }
+        
     }
 
     private void UpdateSelection()
@@ -70,19 +84,19 @@ public class LevelSelector : MonoBehaviour
         if (currentIndex == 0)
         {
             Fog.GetComponent<Renderer>().material = Material0;
-            // Camera.main.backgroundColor = new Color(10f / 255f, 15f / 255f, 44f / 255f, 0f);
+             Camera.main.backgroundColor = new Color(10f / 255f, 15f / 255f, 44f / 255f, 0f);
             
         }
         else if (currentIndex == 1)
         {
             Fog.GetComponent<Renderer>().material = Material1;
-            // mainCamera.backgroundColor = new Color(30f / 255f, 27f / 255f, 23f / 255f, 0f);
+             mainCamera.backgroundColor = new Color(30f / 255f, 27f / 255f, 23f / 255f, 0f);
             
         }
         else if (currentIndex == 2)
         {
             Fog.GetComponent<Renderer>().material = Material2;
-            // mainCamera.backgroundColor = new Color(169f / 255f, 205f / 255f, 235f / 255f, 0f);
+             mainCamera.backgroundColor = new Color(169f / 255f, 205f / 255f, 235f / 255f, 0f);
             
         }
             // Animación del selector
