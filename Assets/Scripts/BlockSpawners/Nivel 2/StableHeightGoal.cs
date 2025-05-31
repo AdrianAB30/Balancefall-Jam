@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class StableHeightGoal : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class StableHeightGoal : MonoBehaviour
 
     [Header("Condición de derrota")]
     public float maxTimeToTry = 60f;
+    public TextMeshProUGUI MaxHeight;
 
     [Header("Referencias")]
     public GameManager gameManager;
@@ -30,7 +32,10 @@ public class StableHeightGoal : MonoBehaviour
         if (maxHeight >= requiredHeight)
         {
             levelEnded = true;
+            SceneManager.LoadScene("Nivel 3");
             gameManager.LevelComplete("✅ ¡Torre alcanzó la altura!");
+            
+
         }
 
         if (globalTimer >= maxTimeToTry)
@@ -56,6 +61,7 @@ public class StableHeightGoal : MonoBehaviour
                 if (y > maxY && y < 100f)
                 {
                     maxY = y;
+                    MaxHeight.text = "Max Height " + maxY.ToString("f1");
                 }
             }
         }

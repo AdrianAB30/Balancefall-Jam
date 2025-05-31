@@ -6893,7 +6893,7 @@ MonoBehaviour:
   fadeImage: {fileID: 251778417}
   platform: {fileID: 890546784}
   contadorPlataforma: {fileID: 890546792}
-  spawner: {fileID: 0}
+  spawner: {fileID: 1550707606}
   textTime: {fileID: 1552458743}
   dronAnmiation: {fileID: 2136005056}
 --- !u!1 &1674787090

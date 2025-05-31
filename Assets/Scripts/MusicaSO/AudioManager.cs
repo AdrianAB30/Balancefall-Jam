@@ -22,20 +22,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip nivel3Music;
     [SerializeField] private AudioSource musicSource;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            musicSource.volume = 0.2f;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
 
     private void OnEnable()
     {

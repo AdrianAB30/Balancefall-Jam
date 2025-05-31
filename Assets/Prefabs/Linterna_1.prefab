@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 284f1367534a1584c96a5e5e3a7ce128, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 284f1367534a1584c96a5e5e3a7ce128, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 284f1367534a1584c96a5e5e3a7ce128, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 284f1367534a1584c96a5e5e3a7ce128, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.5849466
       objectReference: {fileID: 0}
@@ -48,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 284f1367534a1584c96a5e5e3a7ce128, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -913806975483679250, guid: 284f1367534a1584c96a5e5e3a7ce128, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -59,5 +75,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 284f1367534a1584c96a5e5e3a7ce128, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2848637135408471895}
   m_SourcePrefab: {fileID: 100100000, guid: 284f1367534a1584c96a5e5e3a7ce128, type: 3}
+--- !u!1 &7957060923222521014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 284f1367534a1584c96a5e5e3a7ce128, type: 3}
+  m_PrefabInstance: {fileID: 7110129456150006247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2848637135408471895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7957060923222521014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8615bb91eccd6a7498ce4a125a6c8a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 8
+  rotationAmplitude: 12
+  rotationSpeed: 15

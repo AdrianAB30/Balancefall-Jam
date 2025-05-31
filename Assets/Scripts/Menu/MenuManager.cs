@@ -22,6 +22,13 @@ public class MenuManager : MonoBehaviour
         mainMenuPanel.SetActive(false);
 
     }
+    public void CloseLevels()
+    {
+
+        levelsPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+
+    }
     public void OpenCredits()
     {
        
