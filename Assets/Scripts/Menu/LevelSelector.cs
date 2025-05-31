@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class LevelSelector : MonoBehaviour
 {
@@ -27,8 +28,24 @@ public class LevelSelector : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E)) MoveRight();
         if (Input.GetKeyDown(KeyCode.Q)) MoveLeft();
+        if (Input.GetKeyDown(KeyCode.Space)) selectLevel();
     }
 
+    public void selectLevel()
+    {
+        if (currentIndex == 0)
+        {
+            SceneManager.LoadScene("Nivel 1");
+        }
+        else if (currentIndex==1)
+        {
+            SceneManager.LoadScene("Nivel 2");
+        }
+        else if (currentIndex == 2)
+        {
+            SceneManager.LoadScene("Nivel 3");
+        }
+    }
     public void MoveLeft()
     {
         if (currentIndex > 0)

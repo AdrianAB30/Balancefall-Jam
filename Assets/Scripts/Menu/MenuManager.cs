@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
     public void OpenCredits()
     {
        
-        levelsPanel.SetActive(true);
+        creditsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
     }
     public void OpenSettings()
