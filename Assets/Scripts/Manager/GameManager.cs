@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public void LevelComplete(string message)
     {
         Debug.Log(message);
-        Time.timeScale = 0f;   
     }
 
     public void ChangeScene(string nameScene)

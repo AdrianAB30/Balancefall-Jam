@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d9ad0651286d54796786ae7f41eefb, type: 3}
   m_Name: Bloque Rebote
   m_EditorClassIdentifier: 
-  blockPrefab: {fileID: 820508031238727303, guid: 53a38a19ecb03f0418f1de44befc42ee, type: 3}
+  blockPrefab: {fileID: 1785492975945005257, guid: 53a38a19ecb03f0418f1de44befc42ee, type: 3}
   fallSpeedCurve:
     serializedVersion: 2
     m_Curve:

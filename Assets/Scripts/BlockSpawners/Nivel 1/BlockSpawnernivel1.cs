@@ -7,6 +7,7 @@ public class BlockSpawnernivel1 : MonoBehaviour
     public Transform spawnPoint;
     public Transform root;
     private GameObject currentBlock;
+    public UILevel1 uiLvl1;
 
     [Header("Rangos de generación aleatoria")]
     [SerializeField] private int minBlocksToSpawn = 10;
@@ -19,6 +20,7 @@ public class BlockSpawnernivel1 : MonoBehaviour
 
     private int maxBlocksToSpawn;
     private int spawnedCount = 0;
+    private bool spawningEnabled = true;
 
     private string blockTag = "Cubo";
 
@@ -30,13 +32,16 @@ public class BlockSpawnernivel1 : MonoBehaviour
         maxBlocksToSpawn = UnityEngine.Random.Range(MinBlocksRequired + 1, maxBlocksToSpawnRange + 1);
 
         Debug.Log($"🧱 Máx bloques para esta partida: {maxBlocksToSpawn}");
-        Debug.Log($"🔒 Mínimo requerido en escena para spawnear: {MinBlocksRequired}");
+        Debug.Log($"🔒 Mínimo requerido en escena para ganar: {MinBlocksRequired}");
 
+        uiLvl1.Inicializar(maxBlocksToSpawn, MinBlocksRequired);
         SpawnRandomBlock(); 
     }
 
     void Update()
     {
+        if (!spawningEnabled) return;
+
         if (currentBlock == null)
         {
             TrySpawn();
@@ -78,6 +83,13 @@ public class BlockSpawnernivel1 : MonoBehaviour
         spawnedCount++;
         OnBlockSpawned?.Invoke(data.color);
 
+        uiLvl1.ActualizarBloquesRestantes(maxBlocksToSpawn - spawnedCount);
+
         Debug.Log($"🧊 Bloque {spawnedCount}/{maxBlocksToSpawn} instanciado.");
+    }
+    public void DetenerSpawning()
+    {
+        spawningEnabled = false;
+        Debug.Log("🛑 Se ha detenido el spawner.");
     }
 }

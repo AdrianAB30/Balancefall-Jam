@@ -15,6 +15,9 @@ public class TimeGoalCheckerNivel1 : MonoBehaviour
     [Header("Referencias")]
     public GameManager gameManager;
     public Image fadeImage;
+    public GameObject platform;
+    public BlockCounterPlatform contadorPlataforma;
+    public BlockSpawnernivel1 spawner;
 
     private float survivalTimer = 0f;
     private float globalTimer = 0f;
@@ -35,7 +38,7 @@ public class TimeGoalCheckerNivel1 : MonoBehaviour
 
         globalTimer += Time.deltaTime;
 
-        int currentBlockCount = GameObject.FindGameObjectsWithTag(blockTag).Length;
+        int currentBlockCount = contadorPlataforma.BloquesEnPlataforma;
 
         if (currentBlockCount >= minimumBlocksRequired)
         {
@@ -44,6 +47,12 @@ public class TimeGoalCheckerNivel1 : MonoBehaviour
             if (survivalTimer >= timeToWin)
             {
                 levelEnded = true;
+                Rigidbody rb = platform.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.isKinematic = true;
+                }
+                spawner.DetenerSpawning();
                 gameManager.LevelComplete("✅ ¡Superaste el desafío de tiempo!");
             }
         }
@@ -55,6 +64,7 @@ public class TimeGoalCheckerNivel1 : MonoBehaviour
         if (globalTimer >= maxTimeToTry)
         {
             levelEnded = true;
+            spawner.DetenerSpawning();
             StartCoroutine(FadeAndRestart());
         }
     }
