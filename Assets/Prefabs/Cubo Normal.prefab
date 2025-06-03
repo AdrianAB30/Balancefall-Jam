@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7137754380015955784}
   - component: {fileID: 5776656182988556700}
   m_Layer: 3
-  m_Name: Cubo Pesado
+  m_Name: Cubo Normal
   m_TagString: Cubo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -801,7 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashDuration: 0.7
-  flashIntensity: 2
+  flashIntensity: 3
 --- !u!4 &615648210
 Transform:
   m_ObjectHideFlags: 0

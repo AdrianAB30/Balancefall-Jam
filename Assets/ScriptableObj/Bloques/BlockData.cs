@@ -1,6 +1,7 @@
+using NUnit.Framework;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewBlockData", menuName = "Tetris3D/Block Data")]
+[CreateAssetMenu(fileName = "NewBlockData", menuName = "Scriptable Objects/Block Data", order = 1)]
 public class BlockData : ScriptableObject
 {
     public GameObject blockPrefab;

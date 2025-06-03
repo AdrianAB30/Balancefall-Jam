@@ -35,7 +35,7 @@ public class BlockSpawnernivel1 : MonoBehaviour
         Debug.Log($"🔒 Mínimo requerido en escena para ganar: {MinBlocksRequired}");
 
         uiLvl1.Inicializar(maxBlocksToSpawn, MinBlocksRequired);
-        spawningEnabled = false; // Asegura que esté desactivado al comienzo
+        spawningEnabled = false;
         StartCoroutine(DelaySpawner());
     }
 
@@ -58,8 +58,6 @@ public class BlockSpawnernivel1 : MonoBehaviour
         }
 
         int currentInScene = GameObject.FindGameObjectsWithTag(blockTag).Length;
-
-       
 
         SpawnRandomBlock();
     }

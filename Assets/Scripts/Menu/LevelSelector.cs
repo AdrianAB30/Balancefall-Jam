@@ -99,7 +99,6 @@ public class LevelSelector : MonoBehaviour
              mainCamera.backgroundColor = new Color(169f / 255f, 205f / 255f, 235f / 255f, 0f);
             
         }
-            // Animación del selector
             selector.DOMove(levels[currentIndex].position, animationDuration);
 
         

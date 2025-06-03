@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -8,10 +11,16 @@ public class MenuManager : MonoBehaviour
     public GameObject levelsPanel;
     public GameObject creditsPanel;
     public GameObject mainMenuPanel;
+    public Image fadeMenu;
+    public float durationFade;
 
+    public void Start()
+    {
+        fadeMenu.gameObject.SetActive(true);
+        StartCoroutine(FadeIn());
+    }
     public void PlayGame()
     {
-        
         SceneManager.LoadScene("Nivel 1");
     }
 
@@ -20,7 +29,6 @@ public class MenuManager : MonoBehaviour
       
         levelsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
-
     }
     public void CloseLevels()
     {
@@ -56,5 +64,24 @@ public class MenuManager : MonoBehaviour
     {
         panel.SetActive(false);
         mainMenuPanel.SetActive(true);
+    }
+    IEnumerator FadeIn()
+    {
+        float elapsed = 0f;
+        Color color = fadeMenu.color;
+        color.a = 1f; 
+        fadeMenu.color = color;
+
+        while (elapsed < durationFade)
+        {
+            elapsed += Time.deltaTime;
+            color.a = 1f - (elapsed / durationFade);
+            fadeMenu.color = color;
+            yield return null;
+        }
+
+        color.a = 0f;
+        fadeMenu.color = color;
+        fadeMenu.gameObject.SetActive(false);
     }
 }

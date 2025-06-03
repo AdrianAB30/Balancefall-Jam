@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d9ad0651286d54796786ae7f41eefb, type: 3}
   m_Name: Bloque Pesado
   m_EditorClassIdentifier: 
-  blockPrefab: {fileID: 5187361249960859476, guid: 3ff1634c2b9be1745858a0e48ab9561e, type: 3}
+  blockPrefab: {fileID: 5337079391739244273, guid: fecaf4f19655be74eb9253ed8b22227a, type: 3}
   fallSpeedCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.17490107
-      value: 8.009682
-      inSlope: 0.033059515
-      outSlope: 0.033059515
+      time: 0
+      value: 0
+      inSlope: 33.333332
+      outSlope: 33.333332
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 60.84765
-      value: 10.015493
-      inSlope: 0.033059515
-      outSlope: 0.033059515
+      time: 0.3
+      value: 10
+      inSlope: 33.333332
+      outSlope: 33.333332
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -40,4 +40,4 @@ MonoBehaviour:
   mass: 15
   color:
     serializedVersion: 2
-    rgba: 2302893
+    rgba: 255
