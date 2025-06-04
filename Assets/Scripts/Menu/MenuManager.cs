@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MenuManager : MonoBehaviour
 {
@@ -11,17 +12,22 @@ public class MenuManager : MonoBehaviour
     public GameObject levelsPanel;
     public GameObject creditsPanel;
     public GameObject mainMenuPanel;
-    public Image fadeMenu;
     public float durationFade;
+    public float timeDtwn;
+    public float intervalTime;
+    public FadeManager fadeManager;
+    public List<Vector3> targetsButtons;
+    public List<RectTransform> buttons;
+    public Transform platform;
+    public Ease myEase;
 
-    public void Start()
+    private void Start()
     {
-        fadeMenu.gameObject.SetActive(true);
-        StartCoroutine(FadeIn());
+        ShowButtonsMenu();
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene("Nivel 1");
+        fadeManager.FadeToScene("Nivel1");
     }
 
     public void OpenLevels()
@@ -51,13 +57,8 @@ public class MenuManager : MonoBehaviour
     }
 
     public void QuitGame()
-    {
-        
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
+    {     
         Application.Quit();
-#endif
     }
 
     public void ClosePanel(GameObject panel)
@@ -65,23 +66,20 @@ public class MenuManager : MonoBehaviour
         panel.SetActive(false);
         mainMenuPanel.SetActive(true);
     }
-    IEnumerator FadeIn()
+    private void ShowButtonsMenu()
     {
-        float elapsed = 0f;
-        Color color = fadeMenu.color;
-        color.a = 1f; 
-        fadeMenu.color = color;
+        Sequence sequence = DOTween.Sequence();
 
-        while (elapsed < durationFade)
+        for (int i = 0; i < buttons.Count; i++)
         {
-            elapsed += Time.deltaTime;
-            color.a = 1f - (elapsed / durationFade);
-            fadeMenu.color = color;
-            yield return null;
+            sequence.Append(buttons[i].DOAnchorPos(targetsButtons[i], timeDtwn).SetEase(myEase));
         }
+    }
+    public void MovePlatform()
+    {
+        DOTween.Sequence()
+       .AppendInterval(8f)
+       .Append(platform.DOMove(new Vector3(25,-11,13), timeDtwn).SetEase(myEase));
 
-        color.a = 0f;
-        fadeMenu.color = color;
-        fadeMenu.gameObject.SetActive(false);
     }
 }
