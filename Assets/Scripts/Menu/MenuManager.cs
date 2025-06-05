@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
     [Header("UI References")]
     public GameObject settingsPanel; 
+    public GameObject helpPanel; 
+
     public GameObject levelsPanel;
     public GameObject creditsPanel;
     public GameObject mainMenuPanel;
@@ -17,6 +20,8 @@ public class MenuManager : MonoBehaviour
     public float intervalTime;
     public FadeManager fadeManager;
     public List<Vector3> targetsButtons;
+    public List<TextosHowToPlay> textosHowToPlaysSO;
+    public List<TMP_Text> textosHowToPlays;
     public List<RectTransform> buttons;
     public Transform platform;
     public GameObject spawnCube;
@@ -60,9 +65,20 @@ public class MenuManager : MonoBehaviour
         spawnCube.SetActive(false);
         platform.gameObject.SetActive(false);
     }
+    public void OpenHelp()
+    {
+        for (int i = 0; i < textosHowToPlays.Count && i < textosHowToPlaysSO.Count; i++)
+        {
+            textosHowToPlays[i].text = textosHowToPlaysSO[i].howToPlayText;
+        }
+        helpPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
+        spawnCube.SetActive(false);
+        platform.gameObject.SetActive(false);
+    }
 
     public void QuitGame()
-    {     
+    {
         Application.Quit();
     }
 
