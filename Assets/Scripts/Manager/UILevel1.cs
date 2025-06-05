@@ -15,17 +15,17 @@ public class UILevel1 : MonoBehaviour
         totalBloques = total;
         minBloquesRequeridos = minimo;
 
-        txtBloquesRestantes.text = $"Restantes: {totalBloques}";
-        txtBloquesEnPlataforma.text = $"En plataforma: 0/{minBloquesRequeridos}";
+        txtBloquesRestantes.text = $"restantes: {totalBloques}";
+        txtBloquesEnPlataforma.text = $"en plataforma: 0/{minBloquesRequeridos}";
     }
 
     public void ActualizarBloquesRestantes(int restantes)
     {
-        txtBloquesRestantes.text = $"Restantes: {restantes}";
+        txtBloquesRestantes.text = $"restantes: {restantes}";
     }
 
     public void ActualizarBloquesEnPlataforma(int actuales)
     {
-        txtBloquesEnPlataforma.text = $"En plataforma: {actuales} / {minBloquesRequeridos}";
+        txtBloquesEnPlataforma.text = $"en plataforma: {actuales} / {minBloquesRequeridos}";
     }
 }

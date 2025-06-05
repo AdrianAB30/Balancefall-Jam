@@ -10,7 +10,6 @@ public class BlockSpawnernivel1 : MonoBehaviour
     public UILevel1 uiLvl1;
 
     [Header("Rangos de generación aleatoria")]
-    [SerializeField] private int minBlocksToSpawn = 10;
     [SerializeField] private int maxBlocksToSpawnRange = 30;
 
     [SerializeField] private int minBlocksRequiredRangeMin = 10;

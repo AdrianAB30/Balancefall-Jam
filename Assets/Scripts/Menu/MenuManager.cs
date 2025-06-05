@@ -19,41 +19,46 @@ public class MenuManager : MonoBehaviour
     public List<Vector3> targetsButtons;
     public List<RectTransform> buttons;
     public Transform platform;
+    public GameObject spawnCube;
     public Ease myEase;
 
     private void Start()
     {
+        MovePlatform();
         ShowButtonsMenu();
     }
     public void PlayGame()
     {
-        fadeManager.FadeToScene("Nivel1");
+        fadeManager.FadeToScene("Nivel 1");
     }
 
     public void OpenLevels()
     {
-      
         levelsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
+        spawnCube.SetActive(false);
+        platform.gameObject.SetActive(false);
     }
     public void CloseLevels()
     {
-
+        spawnCube.SetActive(true);
+        platform.gameObject.SetActive(true);
         levelsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
-
     }
     public void OpenCredits()
     {
-       
         creditsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
+        spawnCube.SetActive(false);
+        platform.gameObject.SetActive(false);
     }
     public void OpenSettings()
     {
-        
         settingsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
+        spawnCube.SetActive(false);
+        platform.gameObject.SetActive(false);
     }
 
     public void QuitGame()
@@ -65,6 +70,8 @@ public class MenuManager : MonoBehaviour
     {
         panel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        spawnCube.SetActive(true);
+        platform.gameObject.SetActive(true);
     }
     private void ShowButtonsMenu()
     {
@@ -78,7 +85,7 @@ public class MenuManager : MonoBehaviour
     public void MovePlatform()
     {
         DOTween.Sequence()
-       .AppendInterval(8f)
+       .AppendInterval(5f)
        .Append(platform.DOMove(new Vector3(25,-11,13), timeDtwn).SetEase(myEase));
 
     }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SpawnCubeMenu : MonoBehaviour
 {
-    public GameObject cubePrefab;      
-    public Transform spawnPoint;       
-    public float spawnInterval = 1f;   
-    public int numberOfCubesToSpawn = 27; 
-    private int cubesSpawned = 0;
+    public GameObject cubePrefab;
+    public Transform spawnPoint;
+    public float spawnInterval = 1f;
+    public int numberOfCubesToSpawn = 27;
+    public GameObject spawnCube;
 
-    private Rigidbody myRBD;
+    private List<GameObject> spawnedCubes = new List<GameObject>();
 
     void Start()
     {
@@ -19,30 +19,30 @@ public class SpawnCubeMenu : MonoBehaviour
 
     IEnumerator SpawnCubesRoutine()
     {
-        Vector3 currentSpawnOffset = Vector3.zero; 
+        yield return new WaitForSeconds(6f);
+        Vector3 currentSpawnOffset = Vector3.zero;
 
         for (int i = 0; i < numberOfCubesToSpawn; i++)
         {
-
             Vector3 spawnPosition = spawnPoint.position + currentSpawnOffset;
             GameObject newCube = Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
 
-            float cubeSize = newCube.transform.localScale.x; 
+            newCube.transform.SetParent(spawnPoint.transform,true);
+
+            float cubeSize = newCube.transform.localScale.x;
 
             int x = i % 3;
-            int y = (i / 9); 
+            int y = (i / 9);
             int z = (i / 3) % 3;
 
             spawnPosition = spawnPoint.position + new Vector3(
                 (x - 1) * cubeSize,
-                y * cubeSize,      
-                (z - 1) * cubeSize 
+                y * cubeSize,
+                (z - 1) * cubeSize
             );
             newCube.transform.position = spawnPosition;
 
-
-            cubesSpawned++;
-            Debug.Log($"Spawned cube {cubesSpawned}");
+            spawnedCubes.Add(newCube);
 
             yield return new WaitForSeconds(spawnInterval);
         }

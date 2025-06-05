@@ -9,6 +9,7 @@ public class LevelSelector : MonoBehaviour
     [Header("References")]
     public RectTransform selector;
     public RectTransform[] levels;
+    public FadeManager fadeManager;
     public Material Material0;
     public Material Material1;
     public Material Material2;
@@ -16,7 +17,6 @@ public class LevelSelector : MonoBehaviour
     public float animationDuration = 0.3f;
     public float scaleFactor = 1.2f;
     public Camera mainCamera;
-
     private int currentIndex = 0;
 
     void Start()
@@ -35,15 +35,17 @@ public class LevelSelector : MonoBehaviour
     {
         if (currentIndex == 0)
         {
-            SceneManager.LoadScene("Nivel 1");
+            fadeManager.FadeToScene("Nivel 1");
         }
         else if (currentIndex==1)
         {
-            SceneManager.LoadScene("Nivel 2");
+            fadeManager.FadeToScene("Nivel 2");
+
         }
         else if (currentIndex == 2)
         {
-            SceneManager.LoadScene("Nivel 3");
+            fadeManager.FadeToScene("Nivel 3");
+
         }
     }
     public void MoveLeft()
@@ -60,8 +62,6 @@ public class LevelSelector : MonoBehaviour
             currentIndex = 2;
            UpdateSelection();
         }
-
-       
     }
 
     public void MoveRight()
@@ -76,7 +76,6 @@ public class LevelSelector : MonoBehaviour
             currentIndex = 0;
             UpdateSelection();
         }
-        
     }
 
     private void UpdateSelection()

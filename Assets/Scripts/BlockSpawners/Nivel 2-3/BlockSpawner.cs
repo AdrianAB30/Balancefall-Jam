@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 public class BlockSpawner : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class BlockSpawner : MonoBehaviour
     public Transform spawnPoint;
     public Transform root;
     private GameObject currentBlock;
+    private bool spawningEnabled = true;
 
     public static event Action<Color32> OnBlockSpawned;
 
@@ -45,5 +47,11 @@ public class BlockSpawner : MonoBehaviour
         controller.Initialize(data, () => currentBlock = null);
 
         OnBlockSpawned?.Invoke(data.color);
+    }
+    IEnumerator DelaySpawner()
+    {
+        yield return new WaitForSeconds(5f);
+        spawningEnabled = true;
+        SpawnRandomBlock();
     }
 }
